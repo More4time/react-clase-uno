@@ -34,7 +34,18 @@
  * Si no quieren poner una foto suya, pueden tomar la URL de su imagen de perfil de github, como hice yo.
  */
 
-export function Tarjeta(props) {}
+export function Tarjeta(props) {
+  return(
+    <div className="tarjeta">
+      <img  src= {src.props} alt="Foto de perfil" className="tarjeta-img"> </img>
+
+      <div className="tarjeta">
+        <header className="tarjeta-data-header">{props.nombre}</header>
+        <span>{props.titulo}</span>
+      </div>
+    </div>
+  )
+}
 
 /*
  * El esqueleto de este componente será nuestro primer post en un blog.
