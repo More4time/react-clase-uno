@@ -37,8 +37,7 @@
 export function Tarjeta(props) {
   return(
     <div className="tarjeta">
-      <img  src= {src.props} alt="Foto de perfil" className="tarjeta-img"> </img>
-
+      <img  src={props.imagen} alt="Foto de perfil" className="tarjeta-img" />
       <div className="tarjeta">
         <header className="tarjeta-data-header">{props.nombre}</header>
         <span>{props.titulo}</span>
@@ -105,12 +104,12 @@ Creo que puede haber sido un perro, dado que en Argentina no hay ardillas.`}
 
  */
 
-export function BlogPost(props) {
+/*export function BlogPost(props) {
   return (
     <article className="post">
       <header className="post-header">
         <h2 className="post-title">Ardillas</h2>
-        <Tarjeta nombre="Tu nombre" titulo="Tu titulo" imagen="URL de tu imagen" />
+        <Tarjeta nombre="Tu nombre" titulo="Tu titulo" imagen="img\Foto cv.jpg" />
       </header>
       <p className="post-paragraph">Hoy vi una ardilla.</p>
       <p className="post-paragraph">
@@ -122,4 +121,25 @@ export function BlogPost(props) {
       </p>
     </article>
   );
+}*/
+
+export function BlogPost2 (props) {
+  return (
+    <article className="post">
+      <header className="post-header">
+        <h2 className="post-title">{props.tituloPrincipal}</h2>
+        <Tarjeta {...props.autor}/>
+      </header>
+      {props.parrafos.split('\n').map((parrafos, i) =>(
+        <p key={i} className="post-paragraph">
+          {parrafos}
+        </p>
+      ))}
+    </article>
+  );
 }
+
+
+
+
+

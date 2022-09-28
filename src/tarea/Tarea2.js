@@ -12,7 +12,17 @@
  * Para obtener el valor del input en el event handler, deberán usar la propiedad `event.target.value`.
  */
 
-export function MatchNombre(props) {}
+export function MatchNombre(props) {
+    const [value,setValue] =React.useState("");
+
+    return(
+        <input
+        className={"input " + (value.match(props.nombre) && "input-match")}
+        value={value}
+        onChange={event => setValue(event.target.value)} ></input>
+        
+    )
+}
 
 /*
  * Componentes como este son usados a menudo para hacer validaciones de inputs
@@ -32,7 +42,19 @@ export function MatchNombre(props) {}
  * Si hicieron todo bien, el input se pondrá rojo si no pasaron el tamaño mínimo de la contraseña.
  */
 
-export function PasswordInput(props) {}
+export function PasswordInput(props) {
+    const [value,setValue] =React.useState("");
+
+    return(
+        <input
+        type="password"
+        className={"input " + (value.length < props.minLength && "input-match")} //si nuestro value es menor a minLength estará en rojo. Hasta que pase los 7 caracteres.
+        value={value}
+        onChange={event => setValue(event.target.value)} ></input>
+        
+    )
+}
+
 
 /*
  * Estos componentes están bastante buenos, pero estamos repitiendo mucho código,
@@ -60,4 +82,14 @@ export function PasswordInput(props) {}
  * Si quieren, pueden agregar una prop extra "isPassword". Si es true el input deberá tener type="password".
  */
 
-export function ValidationInput(props) {}
+export function ValidationInput(props) {
+    const [value,setValue] =React.useState("");
+
+    return(
+        <input
+        className={"input " + (!props.validation(value) && "input-match")}
+        value={value}
+        onChange={event => setValue(event.target.value)} ></input>
+        
+    )
+}
